@@ -22,15 +22,15 @@ systemctl enable ntpd.service
 echo -e 'EDITOR=vim' > /etc/environment
 echo -e 'runtime: archlinux.vim\nsyntax on' > /etc/skel/.vimrc
 
-echo $HOSTNAME > /etc/hostname
-useradd -m -G wheel -s /bin/bash $USERNAME 
-
 ln -f -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc --utc
 echo $USER_LOCALE > /etc/locale.gen
 locale-gen
 LANG=$LANG_VARIABLE
-localectl set-keymap --no-convert $KEYBOARD
+echo "KEYMAP=$KEYBOARD" >> /etc/vconsole.conf
+
+echo $HOSTNAME > /etc/hostname
+useradd -m -G wheel -s /bin/bash $USERNAME
 
 echo 'name_servers="8.8.8.8 8.8.4.4"' >> /etc/resolvconf.conf
 
