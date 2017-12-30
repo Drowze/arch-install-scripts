@@ -5,7 +5,7 @@ echo 'Loaded chroot.sh'
 HOSTNAME=homura
 USERNAME=giba
 TIMEZONE=America/Sao_Paulo
-USER_LOCALE="pt_BR.UTF-8 UTF8"
+USER_LOCALE="pt_BR.UTF-8 UTF-8"
 
 grub-install --target=i386-pc --recheck /dev/sda
 sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
