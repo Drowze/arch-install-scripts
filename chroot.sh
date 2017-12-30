@@ -26,7 +26,7 @@ ln -f -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc --utc
 echo $USER_LOCALE > /etc/locale.gen
 locale-gen
-LANG=$LANG_VARIABLE
+echo "LANG=$LANG_VARIABLE" >> /etc/locale.conf
 echo "KEYMAP=$KEYBOARD" >> /etc/vconsole.conf
 
 echo $HOSTNAME > /etc/hostname
