@@ -13,7 +13,9 @@ pacman -Syy
 mkdir -p /mnt$SCRIPT_DIR
 mv ./chroot.sh /mnt$SCRIPT_DIR
 
-pacstrap /mnt base base-devel grub openssh sudo ntp
+pacstrap /mnt base base-devel grub openssh sudo ntp exa \
+              fish tmux xsel git neovim htop virtualbox-guest-utils \
+
 genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt /bin/bash $SCRIPT_DIR/chroot.sh
 
