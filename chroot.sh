@@ -16,7 +16,7 @@ ln -f -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc --utc
 echo $USER_LOCALE > /etc/locale.gen
 locale-gen
-echo "LANG=$LANG_VARIABLE" >> /etc/locale.conf
+# echo "LANG=$LANG_VARIABLE" >> /etc/locale.conf
 echo "KEYMAP=$KEYBOARD" >> /etc/vconsole.conf
 
 # Services
@@ -26,12 +26,15 @@ systemctl enable ntpd.service
 systemctl enable vboxservice.service
 
 # misc 
-echo -e 'EDITOR=vim' > /etc/environment
+echo -e 'EDITOR=nvim' > /etc/environment
 echo -e 'runtime: archlinux.vim\nsyntax on' > /etc/skel/.vimrc
+
+# Users
+echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+useradd -m -G wheel -s /bin/bash $USERNAME
 
 # Network huh
 echo $HOSTNAME > /etc/hostname
-useradd -m -G wheel -s /bin/bash $USERNAME
 echo 'name_servers="8.8.8.8 8.8.4.4"' >> /etc/resolvconf.conf
 
 # bootloader

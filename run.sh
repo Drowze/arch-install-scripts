@@ -15,7 +15,7 @@ mv ./chroot.sh /mnt$SCRIPT_DIR
 
 pacstrap /mnt base base-devel grub openssh sudo ntp exa \
               fish tmux xsel git neovim htop virtualbox-guest-utils \
-              xorg-server xorg-xinit xterm i3 \
+              xorg-server xorg-xinit xterm openbox\
               firefox
 
 genfstab -U /mnt > /mnt/etc/fstab
